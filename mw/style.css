@@ -1,0 +1,9 @@
+.hidden { display: none; visibility: hidden; }
+*::-webkit-scrollbar{width: 0px;}
+*::-moz-webkit-scrollbar{width: 0px;}
+html, body { min-height: 100%; width: 100%; height: 100%; margin: 0px; padding: 0px; scrollbar-width: none; overflow: -moz-scrollbars-none; }
+audio { width: 100vw; max-height: 100%; }
+#btns { height: 5%; min-height: 35px; position: fixed;bottom:0%;  }
+#notation { width: 100%; height: 100%; overflow: auto; position: relative; }
+#spdlbl { display: inline; vertical-align: top; }
+#speed { width: 4em; }

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Download</title>
+
+    <style media="screen">
+      br {min-height: 20px; line-height: 200%; }
+    </style>
+
+
+    <script src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+
+    var options = { bname: '' },
+        svgPageCount,
+        host
+
+    $(document).ready (function () {
+        var parstr, ps, i, r, p, svgPageCount = 0, basename = '', host = '';
+        parstr = window.location.href.split ('?');  // parse the URL for "basename" and parameters
+
+        if (parstr.length > 1) {
+            ps = parstr [1].split ('&');
+            for (i = 0; i < ps.length; i++) {
+                p = ps [i];
+               if (r = p.match (/[^=]+/)) basename = p;
+            }
+
+            var user = basename;
+            basename = basename.split(/[/]+/).pop();
+            options.bname = basename;
+
+            console.log(basename);
+
+            if (basename) readUrlFiles (basename, svgPageCount, user, host);   // read all needed files
+
+          }
+
+          function readUrlFiles (basename, svgPageCount, user) {   // read all needed files with given basename
+              var npages, page, flsite, fldir, https = 'https://';
+              var userdata = user.replace('/'+basename,'');
+              var host = userdata.split(/[/]+/).pop();
+              var username = userdata.replace('/'+host,'');
+
+              if (host.toLowerCase()=='c') {
+               flsite = https+"raw.codeberg.page/"+username+"/pages/"+basename+"/";
+               //fldir = "/pages/";
+              }
+              if (host.toLowerCase()=='s') {
+               flsite = https+username+".surge.sh/"+basename+"/";
+               //fldir = "/pages/";
+              }
+
+              console.log(host);
+              console.log(username);
+              console.log(flsite);
+
+
+
+
+              var aud = document.createElement('a');
+              aud.href = flsite+basename+".mp3";
+              aud.innerHTML = 'MP3';
+              aud.download = basename;
+              aud.target = "_blank";
+              aud.rel = "noreferrer";
+
+              var xml = document.createElement('a');
+              xml.href = flsite+basename+".xml";
+              xml.innerHTML = 'XML';
+              xml.download = basename;
+              xml.target = "_blank";
+              xml.rel = "noreferrer";
+
+              var mpos = document.createElement('a');
+              mpos.href = flsite+basename+".mpos";
+              mpos.innerHTML = 'MPOS';
+              mpos.download = basename;
+              mpos.target = "_blank";
+              mpos.rel = "noreferrer";
+
+              document.body.appendChild(aud);
+              document.body.appendChild(document.createElement('br'));
+              document.body.appendChild(xml);
+              document.body.appendChild(document.createElement('br'));
+              document.body.appendChild(mpos);
+              document.body.appendChild(document.createElement('br'));
+
+
+
+
+
+
+            }
+
+
+      });
+
+    </script>
+
+
+  </head>
+  <body>
+
+  </body>
+</html>

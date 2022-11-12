@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Score</title>
+  </head>
+  <body onclick="getlink();">
+
+
+
+<input  onchange="build();upl();getlink();" id="name" type="text" name="" value="" placeholder="Project Name">
+
+<br><br>
+
+<input  onchange="build();upl();getlink();" id="path" type="text" name="" ondblclick="this.value='~/Documents/Musescore3/Scores'" placeholder="Directory of Uploaded File" value="~/Documents/Musescore3/Scores">
+<br><br>
+<input id="location" type="file" multiple name="" value=""> &nbsp; <input id="maxpages" type="text" name="" value="100">
+
+<br><br>
+
+<button onclick="navigator.clipboard.writeText(document.getElementById('cmd').value+'\n'+document.getElementById('upl').value)" type="button" name="button">Copy Entire Code</button>
+
+<h3>Choose what to export</h3>
+
+<label for="xml">XML:</label> <input  onchange="build();upl();getlink();" id="xml" type="checkbox" checked="true" name="" value="">
+<label for="mp3">MP3:</label> <input  onchange="build();upl();getlink();" id="mp3" type="checkbox" checked="true" name="" value="">
+<label for="mpos">MPOS:</label> <input  onchange="build();upl();getlink();" id="mpos" type="checkbox" checked="true" name="" value="">
+<label for="svg">SVGs:</label> <input onchange="build();upl();getlink();"  id="svg" type="checkbox" checked="true" name="" value="">
+
+
+<br><br>
+
+<button onclick="build()" type="button" name="button">Generate Code</button>
+
+<br><br>
+
+<button type="button" name="button" onclick="navigator.clipboard.writeText(document.getElementById('cmd').value.replace(/(&gt;)/g,'>'))">Copy Code</button>
+<br><br>
+<textarea  id="cmd"></textarea>
+
+<br><br>
+
+<audio controls src=""></audio>
+
+<br><br>
+<h3>Generate Code to Upload Exported Files to:</h3>
+<label for="surge">Surge.sh:</label> <input onchange="getlink();upl()"  id="surge" type="radio" name="upl" value=""> &nbsp; <input id="surgedomain" type="text" name="" placeholder="Surge Domain" value=""> &nbsp; <input id="surgecors" type="text" placeholder="Allowed CORS domains" name="" value="*"> <br>
+<label for="codeberg">Codeberg:</label> <input onchange="getlink();upl()" id="codeberg" type="radio" name="upl" value=""> &nbsp; <input id="cbusername" type="text" name="" placeholder="Codeberg Username" value="">
+
+<br><br>
+
+<a id="link" target="_blank" rel="noreferrer" href="">Link to Published Score</a><br><br>
+
+<label for="bgc">Background Color:</label> <input id="bgc" type="color" name="" value=""><br><br>
+
+<label for="tc">Track Color:</label> <input id="tc" type="color" name="" value=""><br><br>
+
+<label for="tcop">Track Opacity:</label> <input id="tcop" type="number" name="" value=""><br><br>
+
+<label for="sm">Scroll Margin:</label> <input id="sm" type="number" name="" value=""><br><br>
+
+<label for="shaud">Show Audio:</label> <input id="shaud" type="checkbox" name="" value=""><br><br>
+
+<label for="localcopy">Keep Local Copy of Export</label><input id="localcopy" type="checkbox" checked="true" name="" value=""><br><br>
+
+<button onclick="upl(); getlink()" type="button" name="button">Generate Code</button>
+
+<br><br>
+
+<button type="button" name="button" onclick="navigator.clipboard.writeText(document.getElementById('upl').value.replace(/(&gt;)/g,'>'))">Copy Upload Code</button>
+<br><br>
+<textarea id="upl"></textarea>
+
+  <script src="addscore.js" charset="utf-8"></script>
+
+  </body>
+</html>
